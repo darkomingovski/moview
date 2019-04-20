@@ -52,6 +52,7 @@ function createUser() {
     (async () => await postIntoBase('users', userObj, message))();
 
     setTimeout(() => {$('#registration-form').slideToggle();$(".grid-container").toggleClass("grid-container-blur");}, 500);
+    $('#registration-form')[0].reset();
 }
 
 export { userRegistrationForm, createUser }

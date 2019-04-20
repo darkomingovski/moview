@@ -17,6 +17,15 @@
       "password": "demo",
       "id": 2,
       "favorites": []
+    },
+    {
+      "username": "ikbnk",
+      "name": "hbkh",
+      "lastname": "jhvbjk",
+      "email": "",
+      "password": "",
+      "favorites": [],
+      "id": 3
     }
   ]
 }

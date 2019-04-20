@@ -41,7 +41,7 @@ function toggleLogin() {
     $('#login').click(function() {$('#alert').empty();});
     $('#login, #close-login').click(function() {$('#login-form').slideToggle();});
     $('#login, #close-login').click(function() {$(".grid-container").toggleClass("grid-container-blur");});
-    $('#login, #close-login').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
+    $('#login, #close-login, .register-button').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
     $('#login, #close-login, #register, #close-register, .register-button').click(function() {$('.main-button').toggleClass("main-button-blur");});
 }
 function eventsAll() {
