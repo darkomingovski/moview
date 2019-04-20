@@ -124,6 +124,13 @@ button:hover {
     margin: 0 5rem;  
 }
 
+.main-button-blur {
+    width: 18%;
+    padding: 1rem 3rem;
+    margin: 0 5rem; 
+    cursor: default; 
+}
+
 .register-button {
     width: 50%;
     padding: 1rem 3rem;

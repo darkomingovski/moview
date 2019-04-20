@@ -34,12 +34,15 @@ function onLoadHTML() {
 }
 function toggleRegister() {
     $('#register, #close-register').click(function() {$('#registration-form').slideToggle();});
-    $('#register, #close-register').click(function(){$(".grid-container").toggleClass("grid-container-blur");});
+    $('#register, #close-register').click(function() {$(".grid-container").toggleClass("grid-container-blur");});
+    $('#register, #close-register').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
 }
 function toggleLogin() {
     $('#login').click(function() {$('#alert').empty();});
     $('#login, #close-login').click(function() {$('#login-form').slideToggle();});
-    $('#login, #close-login').click(function(){$(".grid-container").toggleClass("grid-container-blur");});
+    $('#login, #close-login').click(function() {$(".grid-container").toggleClass("grid-container-blur");});
+    $('#login, #close-login').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
+    $('#login, #close-login, #register, #close-register, .register-button').click(function() {$('.main-button').toggleClass("main-button-blur");});
 }
 function eventsAll() {
     $('#register-button').on('click', createUser);
