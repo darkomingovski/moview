@@ -1,22 +1,22 @@
 {
-    "users": [
-        {
-          "username": "darko.mingovski",
-          "name": "Darko",
-          "surname": "Mingovski",
-          "email": "darko.mingovski@gmail.com",
-          "password": "codetest",
-          "id": 1,
-          "favorites": []
-        },
-        {
-          "username": "demo",
-          "name": "John",
-          "surname": "Doe",
-          "email": "demo@demo.net",
-          "password": "demo",
-          "id": 2,
-          "favorites": []
-        }
-      ]
+  "users": [
+    {
+      "username": "darko.mingovski",
+      "name": "Darko",
+      "surname": "Mingovski",
+      "email": "darko.mingovski@gmail.com",
+      "password": "codetest",
+      "id": 1,
+      "favorites": []
+    },
+    {
+      "username": "demo",
+      "name": "John",
+      "surname": "Doe",
+      "email": "demo@demo.net",
+      "password": "demo",
+      "id": 2,
+      "favorites": []
+    }
+  ]
 }

@@ -10,6 +10,21 @@ body {
     background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../../../moview/src/img/film1.jpg);
     background-position: top center;
     background-attachment: fixed;
+    transform: scale(1.06)
+}
+
+.grid-container-blur {
+    display: grid;
+    grid-template-areas: 'logo logo nav nav login login' 'main main main main main main' 'footer footer footer footer footer footer';
+    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../../../moview/src/img/film1.jpg);
+    background-position: top center;
+    background-attachment: fixed;
+    transform: scale(1.06);
+    filter: blur(10px);
+}
+
+#overflow-hack-for-image-blur {
+    overflow: hidden;
 }
 
 .logo {
@@ -67,7 +82,7 @@ body {
 
 .main {
     grid-area: main;
-    min-height: 50rem;
+    min-height: 46rem;
 }
 
 .main img {
@@ -109,14 +124,90 @@ button:hover {
     margin: 0 5rem;  
 }
 
+.register-button {
+    width: 50%;
+    padding: 1rem 3rem;
+    margin: 0 2rem;  
+}
+
 .footer {
     grid-area: footer;
 }
 
-/* body {
-    
-    background: linear-gradient(
-                     rgba(0,0,0, .7), 
-                     rgba(0,0,0, .7)),
-                     url(theater-1713815.jpg);
-} */
+#registration-form, #login-form {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    right: 26vw;
+    z-index: 999;
+    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../../../moview/src/img/film1.jpg);
+    background-position: top center;
+    background-attachment: fixed;
+    color: black;
+    padding: 1%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    width: 45vw;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    background-color: white;
+    padding-bottom: 3%;
+    border-radius: 4px;
+    font-size: 1vw;
+}
+
+.form-left {
+    margin-left: 4%;
+}
+
+.form-right {
+    margin-right: 4%;
+}
+
+#form-title {
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+}
+
+#close-register, #close-login {
+    float: right;
+    cursor: pointer;
+}
+
+#alert {
+    text-align: center;
+    color: white;
+}
+
+input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    z-index: 1;
+    font-size: 1vw;
+}
+
+input:invalid+span:after {
+    content: '✖';
+    font-size: 1vw;
+    padding-left: 5px;
+    color: rgb(250, 128, 114);
+}
+
+input:valid+span:after {
+    content: '✓';
+    font-size: 1vw;
+    padding-left: 5px;
+    color: green;
+}
