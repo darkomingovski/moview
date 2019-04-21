@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import '../css/main.css';
 import {userRegistrationForm, createUser} from './register';
 import {userLoginForm, userLogin} from './login';
+import {_renderApp, searchFromDB} from './app';
 'use strict';
 
 function _renderMain() {
@@ -25,11 +26,7 @@ function onLoadHTML() {
     if (page.search('/index.html') >= 0) {
         return _renderMain();
     } else if (page.search('/app.html') >= 0) {
-        return _renderMain();
-    } else if (page.search('/register.html') >= 0) {
-        return userRegistrationForm();
-    } else if (page.search('/login.html') >= 0) {
-        return _renderMain();
+        return _renderApp();
     }
 }
 function toggleRegister() {
@@ -47,6 +44,7 @@ function toggleLogin() {
 function eventsAll() {
     $('#register-button').on('click', createUser);
     $('#login-button').on('click', userLogin);
+    $('#movie_search_button').on('click', searchFromDB);
 }
 
 $(document).on('load', onLoadHTML(), userRegistrationForm(), userLoginForm(), toggleRegister(), toggleLogin(), eventsAll());

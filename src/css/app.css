@@ -1,0 +1,108 @@
+.app-grid-container {
+    display: grid;
+    color: rgb(180, 180, 180);
+    border-left: 4px solid red;
+    border-right: 4px solid red;
+    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film1.jpg);
+    background-position: top center;
+    background-attachment: fixed;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+    'user search'
+    'nav app'
+    'nav app'
+    'nav app'
+    'logout app';
+}
+.user {
+    grid-area: user;
+    background-color: rgb(0, 0, 0, 0.5);
+    text-align: center;
+}
+.user img {
+    margin-left: auto;
+	margin-right: auto;
+    display: block;
+    padding-top: 10%;
+}
+.user h2 {
+    color: red;
+}
+.nav {
+    grid-area: nav;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: 10% 0;
+}
+.nav ul {
+    list-style-type: none;
+}
+.nav li {
+    padding: 5% 0 5% 5%;
+}
+.nav li:hover {
+    cursor: pointer;
+    color: red;
+    border-right: 2px solid red;
+}
+.search {
+    grid-area: search;
+    background-color: rgb(0, 0, 0, 0.3);
+    padding: 2% 5%;
+}
+.search input {
+    width: 40%;
+}
+.search h2 {
+    color:white;
+}
+.app {
+    grid-area: app;
+    background-color: rgb(0, 0, 0, 0.3);
+}
+.logout {
+    grid-area: logout;
+    background-color: rgb(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 10% 0;
+}
+.logout i {
+    margin-left: auto;
+	margin-right: auto;
+    display: block;
+    padding: 15% 0 5% 0;
+}
+.logout i:hover {
+    cursor: pointer;
+}
+i {
+    color: rgb(180, 180, 180);
+    width: 20%;
+}
+#movie_search_button {
+    width: 18%;
+    padding: 1.2% 3%;
+    margin: 0 5%;
+}
+#item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3% 3%;
+}
+#app-title h2 {
+    padding: 2% 0;
+    color: white;
+    padding: 0 5%;
+}
+.dbItem {
+    width: 17%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: rgb(0, 0, 0, 0.3);
+    margin: 2% 1%;
+    overflow: hidden;
+}
+.dbItem-img img {
+    width: 100%;
+}

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const serverUrl = `http://localhost:3000`;
-const api = axios.create({
-    baseURL: `${serverUrl}`
+const serverUrl_json = `http://localhost:3000`;
+const api_json = axios.create({
+    baseURL: `${serverUrl_json}`
 });
-api.defaults.timeout = 4000;
+api_json.defaults.timeout = 4000;
 
 function userLoginForm() {
     const $registerUser = $(`<form id="login-form"><div id="form-title">MOVIEW LOGIN<i id="close-login" class="far fa-times-circle"></i></div>
@@ -24,7 +24,7 @@ function userLoginForm() {
 }
 
 async function getBase(location) {
-    const responsFromBase = await api.get(`${location}`);
+    const responsFromBase = await api_json.get(`${location}`);
     return responsFromBase.data;
 }
 
@@ -45,6 +45,7 @@ async function userLogin() {
         alert(`Uspesno ste se ulogovali!\nDobro došao/la ${localStorage.getItem('user')}`);
         $('#login-form').slideToggle();
         $(".grid-container").toggleClass("grid-container-blur");
+        location.href = 'app.html';
     } else {
         $('#username').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#password').css('border', '1.5px solid rgb(250, 100, 100)');

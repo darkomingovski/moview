@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const serverUrl = `http://localhost:3000`;
-const api = axios.create({
-    baseURL: `${serverUrl}`
+const serverUrl_json = `http://localhost:3000`;
+const api_json = axios.create({
+    baseURL: `${serverUrl_json}`
 });
-api.defaults.timeout = 4000;
+api_json.defaults.timeout = 4000;
 
 function userRegistrationForm() {
     const $registerUser = $(`<form id="registration-form"><div id="form-title">MOVIEW REGISTRATION<i id="close-register" class="far fa-times-circle"></i></div>
@@ -33,7 +33,7 @@ function userRegistrationForm() {
 }
 
 async function postIntoBase(location, obj, message) {
-    return await api.post(`/${location}`, obj)
+    return await api_json.post(`/${location}`, obj)
         .then(alert(`${message}`))
         .catch((error) => {
             alert(error);
