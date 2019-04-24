@@ -42,6 +42,8 @@ async function postIntoBase(location, obj, message) {
 
 function createUser() {
     const userObj = {};
+    userObj.watched = [];
+    userObj.planned = [];
     $("#registration-form").find("input").each(function () {
         userObj[this.name] = $(this).val();
     });

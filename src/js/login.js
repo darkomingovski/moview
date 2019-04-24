@@ -7,15 +7,16 @@ const api_json = axios.create({
 api_json.defaults.timeout = 4000;
 
 function userLoginForm() {
+    $('#alert').remove();
     const $registerUser = $(`<form id="login-form"><div id="form-title">MOVIEW LOGIN<i id="close-login" class="far fa-times-circle"></i></div>
     <div class="form-container">
-                    <div class="form-left"><br>
+                    <div class="form-left">
                     <input type="text" name="username" id="username" placeholder="username" required>
                     </div>
-                    <div class="form-right"><br>
+                    <div class="form-right">
                     <input type="password" name="password" id="password" placeholder="password" required>
                     </div>   
-    </div><br>
+    </div>
     <div id="alert"></div>
     <div class="button-wrapper">
     <button type="reset" class="register-button">RESET</button>
@@ -24,8 +25,8 @@ function userLoginForm() {
 }
 
 async function getBase(location) {
-    const responsFromBase = await api_json.get(`${location}`);
-    return responsFromBase.data;
+    const responseFromBase = await api_json.get(`${location}`);
+    return responseFromBase.data;
 }
 
 async function userLogin() {
@@ -42,15 +43,19 @@ async function userLogin() {
         }
     }
     if (JSON.parse(localStorage.getItem('validation'))) {
-        alert(`Uspesno ste se ulogovali!\nDobro došao/la ${localStorage.getItem('user')}`);
         $('#login-form').slideToggle();
         $(".grid-container").toggleClass("grid-container-blur");
         location.href = 'app.html';
     } else {
         $('#username').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#password').css('border', '1.5px solid rgb(250, 100, 100)');
-        $('#alert').html(`Nije dobar unos podataka za login`).css('color', 'rgb(250, 100, 100)');
+        $('#alert').html(`Invalid username and password. Please try again.`).css('color', 'rgb(250, 100, 100)');
     }
 }
 
-export { userLoginForm, userLogin }
+function userLogout() {
+        localStorage.clear();
+        location.href = 'index.html';
+}
+
+export { userLoginForm, userLogin, userLogout }

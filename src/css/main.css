@@ -5,40 +5,34 @@ body {
     font-size: 1vw;
     font-family: 'Lato', sans-serif;
 }
-
 .grid-container {
     display: grid;
-    grid-template-areas:'main main main main main main' 'footer footer footer footer footer footer';
-    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film1.jpg);
+    grid-template-areas:'main';
+    background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film1.jpg);
     background-position: top center;
     background-attachment: fixed;
     transform: scale(1.06)
 }
-
 .grid-container-blur {
     display: grid;
-    grid-template-areas:'main main main main main main' 'footer footer footer footer footer footer';
-    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film1.jpg);
+    grid-template-areas:'main';
+    background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film1.jpg);
     background-position: top center;
     background-attachment: fixed;
     transform: scale(1.06);
     filter: blur(10px);
 }
-
 #overflow-hack-for-image-blur {
     overflow: hidden;
 }
-
 .main {
     grid-area: main;
-    min-height: 46rem;
+    min-height: 100vh;
 }
-
 .main img {
     padding-top: 10rem;
     width: 100%;
 }
-
 button {
     display: inline-block;
     border: 1px solid rgb(204, 34, 34);
@@ -53,43 +47,33 @@ button {
     cursor: pointer;
     font-size: 1vw;
 }
-
 button:hover {
     transition: 0.25s ease-in-out;
     border: 1px solid rgb(250, 105, 89);
 }
-
 .button-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    padding-top: 3%;
-  }
-
-.main-button {
-    width: 18%;
-    padding: 1rem 3rem;
-    margin: 0 5rem;  
+    padding-top: 10%;
 }
-
-.main-button-blur {
-    width: 18%;
+.main-button {
+    width: 15%;
     padding: 1rem 3rem;
-    margin: 0 5rem; 
+    margin: 0 3rem;  
+}
+.main-button-blur {
+    width: 15%;
+    padding: 1rem 3rem;
+    margin: 0 3rem; 
     cursor: default; 
 }
-
 .register-button {
     width: 50%;
     padding: 1rem 3rem;
     margin: 0 2rem;  
 }
-
-.footer {
-    grid-area: footer;
-}
-
 #registration-form, #login-form {
     display: none;
     text-align: center;
@@ -97,7 +81,7 @@ button:hover {
     top: 25%;
     right: 26vw;
     z-index: 999;
-    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film1.jpg);
+    background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film1.jpg);
     background-position: top center;
     background-attachment: fixed;
     color: black;
@@ -106,7 +90,6 @@ button:hover {
     border-radius: 4px;
     width: 45vw;
 }
-
 .form-container {
     display: flex;
     flex-direction: row;
@@ -114,35 +97,31 @@ button:hover {
     align-items: stretch;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
     background-color: white;
-    padding-bottom: 3%;
+    padding: 1% 0;
     border-radius: 4px;
     font-size: 1vw;
 }
-
 .form-left {
     margin-left: 4%;
 }
-
 .form-right {
     margin-right: 4%;
 }
-
 #form-title {
     font-size: 2rem;
     text-align: center;
     color: white;
+    padding-bottom: 7%;
 }
-
 #close-register, #close-login {
     float: right;
     cursor: pointer;
 }
-
 #alert {
     text-align: center;
     color: white;
+    padding-top: 2%;
 }
-
 input {
     padding: 12px 20px;
     margin: 8px 0;
@@ -153,14 +132,12 @@ input {
     z-index: 1;
     font-size: 1vw;
 }
-
 input:invalid+span:after {
     content: '✖';
     font-size: 1vw;
     padding-left: 5px;
     color: rgb(250, 128, 114);
 }
-
 input:valid+span:after {
     content: '✓';
     font-size: 1vw;
