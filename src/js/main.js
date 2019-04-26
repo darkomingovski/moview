@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import '../css/main.css';
-import {userRegistrationForm, createUser} from './register';
+import {userRegistrationForm, createUser, validateFormInput } from './register';
 import {userLoginForm, userLogin, userLogout} from './login';
 import {_renderApp, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch} from './app';
 'use strict';
@@ -10,9 +10,10 @@ function _renderMain() {
     <div class="main">
         <img src="./img/MOVIEW.png" alt="" srcset="">
         <div class="button-wrapper">
-        <button class="main-button" id="register">SIGN UP</button><button class="main-button" id="login" type="submit">LOG IN</button>
+        <button class="main-button" id="register">SIGN&nbsp;UP</button><button class="main-button" id="login" type="submit">LOG&nbsp;IN</button>
     </div>
     </div>
+    <div class="footer"><img src="./img/tmdblogo.png" alt="" srcset=""><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
 </div></div>`);
 $login.appendTo('body');
 userRegistrationForm();
@@ -23,7 +24,8 @@ function onLoadHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return _renderMain();
-    } else if (page.search('/app.html') >= 0) {
+    } 
+    else if (page.search('/app.html') >= 0) {
         return _renderApp();
     }
 }
@@ -48,6 +50,8 @@ function eventsAll() {
     $('#planned').on('click', plannedToWatch);
     $('#popular').on('click', nowPopular);
     $('.logout-button').on('click', userLogout);
+    $('.validity').blur(validateFormInput);
+    //$('.validity').on('input', validateFormInput);
 }
 
 $(document).on('load', onLoadHTML(), toggleRegister(), toggleLogin(), eventsAll());

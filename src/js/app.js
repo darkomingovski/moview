@@ -1,5 +1,34 @@
 import axios from 'axios';
-import { addToPlanned, removeFromPlanned, addToWatched, removeFromWatched, recentlyWatched, plannedToWatch } from './watchlist';
+import { Spinner } from 'spin.js';
+import { checkMovieDetailsFromResponse, checkMovieDetailsFromJson, checkMovieIconPlanned, checkMovieIconWatched } from './compare-db';
+import { recentlyWatched, plannedToWatch } from './watchlist';
+
+let spinner = {};
+function startSpinner() {
+    let opts = {
+        lines: 13,
+        length: 38,
+        width: 17,
+        radius: 45,
+        scale: 1,
+        corners: 1,
+        color: '#ffffff',
+        fadeColor: 'transparent',
+        speed: 1,
+        rotate: 0,
+        animation: 'spinner-line-fade-quick',
+        direction: 1,
+        zIndex: 2e9,
+        className: 'spinner',
+        top: '50%',
+        left: '50%',
+        shadow: '0 0 1px transparent',
+        position: 'absolute'
+       }
+        let target = $("body")[0];
+        spinner =  new Spinner(opts).spin(target);
+        return spinner;
+}
 
 const serverUrl = `https://api.themoviedb.org/3`;
 const api = axios.create({
@@ -52,6 +81,7 @@ nowPopular()
 }
 
 async function _renderItems(response, query) {
+    startSpinner();
     $('#app-title').empty();
     let $title = query;
     $title.appendTo('#app-title');
@@ -62,58 +92,24 @@ async function _renderItems(response, query) {
         const unStarred = ('far'+' '+'fa-star');
         const eyed = ('fas'+' '+'fa-eye');
         const unEyed = ('far'+' '+'fa-eye-slash');
-        if (a.original_title == undefined) { a.original_title = a.name;}
-        if(a.release_date == undefined) {
-            if(a.first_air_date == undefined) { a.release_date = 'none';}
-            else { a.release_date = a.first_air_date;}
-        }
-        if(a.vote_average == 0) { a.vote_average = 'not rated';}
-        if (a.genres == undefined) {genres = a.genre_ids}
-        if (a.genres != undefined) {
-            for (const n of a.genres) {
-                genres.push(n.id);
-            }
-        }
-        let check = await checkMovie(a.id, genres);
-        let emoji; let emoji_e;
-        check[0] == true ? emoji = starred : emoji = unStarred;
-        check[1] == true ? emoji_e = eyed : emoji_e = unEyed;
+        let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genres);
+        let checkDetailsJson = await checkMovieDetailsFromJson(a.id, checkDetailsResponse[1]);
+        let emoji_star; let emoji_eye;
+        checkDetailsJson[0] == true ? emoji_star = starred : emoji_star = unStarred;
+        checkDetailsJson[1] == true ? emoji_eye = eyed : emoji_eye = unEyed;
         const $item = $(`
-        <div class="dbItem" id="dbItem_${a.id}">
-        <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${a.id}', '_blank')";><img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/${a.poster_path}" alt=""></div>
-        <div class="tmdb-vote" id="${a.id}">score: ${a.vote_average}<i class="${emoji}" id="planned_${a.id}"></i><i class="${emoji_e}" id="watched_${a.id}"></i></div>
-        <div class="item-title">${a.original_title}</div>
-        <div class="item-year">released: ${(a.release_date).slice(0,4)}</div>
-        <div class="item-genre">${check[2].join(', ')}</div>
+        <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}">
+        <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')";><img src="${checkDetailsResponse[0].poster_path}" alt=""></div>
+        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_star}" id="planned_${checkDetailsResponse[0].id}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}"></i></div>
+        <div class="item-title">${checkDetailsResponse[0].original_title}</div>
+        <div class="item-year">Released: ${(a.release_date).slice(0,4)}</div>
+        <div class="item-genre">${checkDetailsJson[2].join(', ')}</div>
     </div>`);
     $item.appendTo('#item-container'); 
     }
     $('.fa-star').on('click', checkMovieIconPlanned);
     $('.fa-eye-slash, .fa-eye').on('click', checkMovieIconWatched);
-}
-
-async function checkMovie(id, genre_ids) {
-    let planned; let watched;
-    const user = localStorage.getItem('id');
-    const response = await api_json.get(`/users/${user}`);
-    let data = response.data;
-    const response_genres = await api_json.get('/genres');
-    let genres_query = response_genres.data;
-    let genres = [];
-    for (const a of genre_ids) {
-        const x = genres_query.find(e => e.id === a);
-        genres.push(x.name);
-    }
-    data.planned.indexOf(id) != -1 ? planned = true : planned = false;
-    data.watched.indexOf(id) != -1 ? watched = true : watched = false;
-    return [planned, watched, genres]
-}
-
-function checkMovieIconPlanned() {
-    $(event.target).hasClass('far') ? addToPlanned() : removeFromPlanned();
-}
-function checkMovieIconWatched() {
-    $(event.target).hasClass('far') ? addToWatched() : removeFromWatched();
+    spinner.stop();
 }
 
 async function searchFromDB() {

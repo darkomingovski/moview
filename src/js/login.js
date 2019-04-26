@@ -20,7 +20,7 @@ function userLoginForm() {
     <div id="alert"></div>
     <div class="button-wrapper">
     <button type="reset" class="register-button">RESET</button>
-    <button type="button" class="register-button" id="login-button">LOG IN</button></form>`);
+    <button type="button" class="register-button" id="login-button">LOG&nbsp;IN</button></form>`);
     $registerUser.appendTo('body');
 }
 

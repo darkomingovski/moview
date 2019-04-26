@@ -2,7 +2,7 @@
     color: rgb(180, 180, 180);
     border-left: 0.3vw solid red;
     border-right: 0.3vw solid red;
-    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film1.jpg);
+    background: linear-gradient(rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../src/img/film.jpg);
     background-position: top center;
     background-attachment: fixed;
 }
@@ -16,7 +16,7 @@
     text-align: center;
     position: fixed;
     width: 19.7vw;
-    height: 25%;
+    min-height: 25vh;
 }
 .user img {
     margin-left: auto;
@@ -31,7 +31,7 @@
     background-color: rgb(0, 0, 0, 0.5);
     position: fixed;
     width: 19.7vw;
-    min-height: 80vh;
+    min-height: 78vh;
     top: 25%;
     padding: 5% 0;
 }
@@ -62,7 +62,7 @@
 .app {
     background-color: rgb(0, 0, 0, 0.3);
     grid-column-start: 2;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 #logout {
     padding: 40% 0 0 40%; 
@@ -83,7 +83,7 @@ i {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 3% 3%;
+    padding: 2% 3%;
 }
 #app-title h2 {
     padding: 2% 0;
