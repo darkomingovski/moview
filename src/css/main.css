@@ -7,32 +7,23 @@ body {
 }
 .grid-container {
     display: grid;
-    grid-template-areas:'main''footer';
+    grid-template-areas:'login main''footer footer';
     background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film.jpg);
     background-position: top center;
     background-attachment: fixed;
-    transform: scale(1.06);
     min-height: 100vh;
 }
-.grid-container-blur {
-    display: grid;
-    grid-template-areas:'main''footer';
-    background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film.jpg);
-    background-position: top center;
-    background-attachment: fixed;
-    transform: scale(1.06);
-    filter: blur(10px);
-    min-height: 100vh;
-}
-#overflow-hack-for-image-blur {
-    overflow: hidden;
+.login {
+    grid-area: login;
+    width: 50vw;
 }
 .main {
     grid-area: main;
+    width: 50vw;
 }
 .main img {
-    padding-top: 10rem;
-    width: 100%;
+    padding-top: 5rem;
+    width: 80%;
 }
 button {
     display: inline-block;
@@ -54,32 +45,30 @@ button:hover {
 }
 .button-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5%;
+    flex-direction: column;
+    padding: 3% 0 3% 10%;
 }
-.main-button {
-    width: 15%;
-    padding: 1rem 3rem;
-    margin: 0 3rem;  
-}
-.main-button-blur {
-    width: 15%;
-    padding: 1rem 3rem;
-    margin: 0 3rem; 
-    cursor: default; 
+.button-wrapper-login {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 0 3% 12.5%;
 }
 .register-button {
-    width: 50%;
-    padding: 1rem 3rem;
-    margin: 0 2rem;  
+    width: 70%;
+    padding: 0.75rem 1.25rem;
+    margin: 0.5rem 0 0.5rem 3rem;  
 }
-#registration-form, #login-form {
+.button-login {
+    width: 85%;
+    padding: 0.75rem 1.25rem;
+    margin: 0.5rem 0;
+}
+#registration-form {
     display: none;
     text-align: center;
     position: absolute;
-    top: 25%;
-    right: 26vw;
+    top: 15%;
+    left: 7vw;
     z-index: 999;
     background: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 100%), url(../src/img/film.jpg);
     background-position: top center;
@@ -87,25 +76,37 @@ button:hover {
     color: black;
     padding: 1%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    width: 45vw;
+    border-radius: 6px;
+    width: 35vw;
+}
+#login-form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 20vh;
+    border-radius: 6px;
+    width: 50%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    background-color: whitesmoke;
+}
+#login-form h3 {
+    padding-top: 5%;
+}
+.login-bottom {
+    padding-bottom: 5%;
 }
 .form-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
+    flex-direction: column;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
-    background-color: white;
-    padding: 1% 0;
-    border-radius: 4px;
+    background-color: whitesmoke;
+    padding: 2% 0;
+    border-radius: 6px;
     font-size: 1vw;
 }
 .form-left {
     margin-left: 4%;
-}
-.form-right {
-    margin-right: 4%;
 }
 #form-title {
     font-size: 2vw;
@@ -113,7 +114,10 @@ button:hover {
     color: white;
     margin: 0 0 5% 15%;
 }
-#close-register, #close-login {
+#form-title .fa-times-circle {
+    margin: 0;
+}
+#close-register {
     float: right;
     cursor: pointer;
 }
@@ -122,22 +126,25 @@ button:hover {
     color: white;
     padding-top: 2%;
 }
-input {
+input, input:focus {
     padding: 0.75rem 1.25rem;
     margin: 0.5rem 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     box-sizing: border-box;
     z-index: 1;
     font-size: 1vw;
-    width: 17rem;
+    width: 83%;
+}
+#login-form input {
+    width: 75%;
 }
 .footer {
+    grid-column: 1 / span 2;
     color: rgb(180, 180, 180, 0.5);
     text-align: center;
     font-size: 0.7vw;
-    padding-top: 5%;
 }
 .footer img {
     width: 7%;
@@ -150,7 +157,7 @@ input {
     flex-wrap: wrap;
 }
 .fa-check-circle, .fa-times-circle {
-    margin-top: 5%;
+    margin-top: 2%;
 }
 @media only screen and (max-width: 1024px) {
     .form-container {
@@ -167,9 +174,6 @@ input {
     }
 }
 @media only screen and (max-width: 768px) {
-    .form-container {
-        flex-wrap: wrap;
-    }
     .main-button {
         margin: 0 1rem;
         padding: 1rem 1rem;

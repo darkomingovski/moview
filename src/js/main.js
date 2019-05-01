@@ -1,23 +1,38 @@
 import '@babel/polyfill';
 import '../css/main.css';
 import {userRegistrationForm, createUser, validateFormInput } from './register';
-import {userLoginForm, userLogin, userLogout} from './login';
+import {userLogin, userLogout} from './login';
 import {_renderApp, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch} from './app';
 'use strict';
 
 function _renderMain() {
-    const $login = $(`<div id="overflow-hack-for-image-blur"><div class="grid-container">
+    const $login = $(`<div class="grid-container">
+    <a href="https://github.com/darkomingovski/moview"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png" alt="Fork me on GitHub"></a>
+    <div class="login">
+    <form id="login-form">
+    <h3>Welcome to</h3>
+    <h2>MOVIEW</h2>
+    <div>Log in to get on the things that interest you</div>
+    <div class="form-container">
+                    <div class="form">
+                    <input type="text" name="username" id="username-login" placeholder="username" required>
+                    <br>
+                    <input type="password" name="password" id="password-login" placeholder="password" required>
+                    </div> 
+    </div>
+    <div id="alert"></div>
+    <div class="button-wrapper-login">
+    <button type="reset" class="button-login">RESET</button>
+    <button type="button" class="button-login" id="login-button">LOG&nbsp;IN</button></div>
+    <div class="login-bottom">Don't have an account?&nbsp;<a href="#" id="register-link">Sign up now!</a></div></form>
+    </div>
     <div class="main">
         <img src="./img/MOVIEW.png" alt="" srcset="">
-        <div class="button-wrapper">
-        <button class="main-button" id="register">SIGN&nbsp;UP</button><button class="main-button" id="login" type="submit">LOG&nbsp;IN</button>
-    </div>
     </div>
     <div class="footer"><img src="./img/tmdblogo.png" alt="" srcset=""><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
-</div></div>`);
+</div>`);
 $login.appendTo('body');
 userRegistrationForm();
-userLoginForm()
 }
 
 function onLoadHTML() {
@@ -30,15 +45,7 @@ function onLoadHTML() {
     }
 }
 function toggleRegister() {
-    $('#register, #close-register').click(function() {$('#registration-form').slideToggle();});
-    $('#register, #close-register').click(function() {$(".grid-container").toggleClass("grid-container-blur");});
-    $('#register, #close-register').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
-}
-function toggleLogin() {
-    $('#login, #close-login').click(function() {$('#login-form').slideToggle();});
-    $('#login, #close-login').click(function() {$(".grid-container").toggleClass("grid-container-blur");});
-    $('#login, #close-login, .register-button').click(function() {$('#register, #login').attr('disabled', !$('#register, #login').attr('disabled'));});
-    $('#login, #close-login, #register, #close-register, .register-button').click(function() {$('.main-button').toggleClass('main-button-blur');});
+    $('#register-link, #close-register').click(function() {$('#registration-form').slideToggle();});
 }
 function eventsAll() {
     $('#register-button').on('click', createUser);
@@ -51,7 +58,6 @@ function eventsAll() {
     $('#popular').on('click', nowPopular);
     $('.logout-button').on('click', userLogout);
     $('.validity').blur(validateFormInput);
-    //$('.validity').on('input', validateFormInput);
 }
 
-$(document).on('load', onLoadHTML(), toggleRegister(), toggleLogin(), eventsAll());
+$(document).on('load', onLoadHTML(), toggleRegister(), eventsAll());

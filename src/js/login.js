@@ -11,10 +11,10 @@ function userLoginForm() {
     const $registerUser = $(`<form id="login-form"><div id="form-title">MOVIEW LOGIN<i id="close-login" class="far fa-times-circle"></i></div>
     <div class="form-container">
                     <div class="form-left">
-                    <input type="text" name="username" id="username" placeholder="username" required>
+                    <input type="text" name="username" id="username-login" placeholder="username" required>
                     </div>
                     <div class="form-right">
-                    <input type="password" name="password" id="password" placeholder="password" required>
+                    <input type="password" name="password" id="password-login" placeholder="password" required>
                     </div>   
     </div>
     <div id="alert"></div>
@@ -30,8 +30,8 @@ async function getBase(location) {
 }
 
 async function userLogin() {
-    const $username = $('#username').val();
-    const $password = $('#password').val();
+    const $username = $('#username-login').val();
+    const $password = $('#password-login').val();
     const usersFromBase = await getBase(`/users`);
 
     for (const user of usersFromBase) {
@@ -46,7 +46,8 @@ async function userLogin() {
         $('#login-form').slideToggle();
         $(".grid-container").toggleClass("grid-container-blur");
         location.href = 'app.html';
-    } else {
+    } 
+    else {
         $('#username').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#password').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#alert').html(`Invalid username and password. Please try again.`).css('color', 'rgb(250, 100, 100)');

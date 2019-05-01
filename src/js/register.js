@@ -19,8 +19,6 @@ function userRegistrationForm() {
                     <div id="input-lastname">
                     <input type="text" name="lastname" id="lastname" placeholder="lastname" class="validity" required>
                     </div>
-                    </div>
-                    <div class="form-right" id="form-right">
                     <div id="input-email">
                     <input type="email" name="email" id="email" placeholder="email" class="validity" required>
                     </div>
@@ -45,26 +43,32 @@ async function postIntoBase(location, obj, message) {
             alert(error);
         });
 }
-
+let count = 0;
 function createUser() {
-    const userObj = {};
-    userObj.watched = [];
-    userObj.planned = [];
-    $("#registration-form").find("input").each(function () {
-        userObj[this.name] = $(this).val();
-    });
-    delete userObj.passwordRepeat;
-    userObj['favorites'] = [];
-
-    const message = 'Uspesno ste se registrovali';
-    (async () => await postIntoBase('users', userObj, message))();
-
-    setTimeout(() => {$('#registration-form').slideToggle();$(".grid-container").toggleClass("grid-container-blur");}, 500);
-    $('#registration-form')[0].reset();
+        const userObj = {};
+        userObj.watched = [];
+        userObj.planned = [];
+        $("#registration-form").find("input").each(function () {
+            userObj[this.name] = $(this).val();
+        });
+        delete userObj.passwordRepeat;
+        userObj['favorites'] = [];
+        const check = Object.values(userObj);
+        check.includes("") ? count++ : count;
+    if (count == 0) {
+        const message = 'Uspesno ste se registrovali';
+        (async () => await postIntoBase('users', userObj, message))();
+        setTimeout(() => { $('#registration-form').slideToggle(); $(".grid-container").toggleClass("grid-container-blur"); }, 500);
+        $('#registration-form')[0].reset();
+    }
+    else {
+        alert('One or more fields have an error. Please check and try again.');
+        count = 0;
+    }
 }
 
 function validateFormInput() {
-    let check =  event.currentTarget.name;
+    let check = event.currentTarget.name;
     const RegEx = {
         firstname: /^[A-ZŠĐŽĆČ][a-zšđčćž]{1,11}\s?([A-ZŠĐŽĆČ][a-zšđčćž]{1,11})?$/,
         lastname: /^[A-ZŠĐŽĆČ][a-zšđčćž]{1,11}\s?([A-ZŠĐŽĆČ][a-zšđčćž]{1,11})?$/,
@@ -76,19 +80,22 @@ function validateFormInput() {
     if (RegEx[check].test(input) == true) {
         if (document.getElementById(`${check}`).parentElement.parentElement.id == "form-left") {
             $(`#input-${check}`).find('.fa-times-circle').remove();
+            $(`#input-${check}`).find('.fa-check-circle').remove();
             $(`#input-${check}`).append('<i class="far fa-check-circle fa-2x"></i>');
         }
         else {
-            $(`#input-${check}`).prepend('<i class="far fa-check-circle fa-2x"></i>');
+            $(`#input-${check}`).apppend('<i class="far fa-check-circle fa-2x"></i>');
         }
     }
     if (RegEx[check].test(input) == false) {
+        count = count + 1;
         if (document.getElementById(`${check}`).parentElement.parentElement.id == "form-left") {
             $(`#input-${check}`).find('.fa-check-circle').remove();
+            $(`#input-${check}`).find('.fa-times-circle').remove();
             $(`#input-${check}`).append('<i class="far fa-times-circle fa-2x"></i>');
         }
         else {
-            $(`#input-${check}`).prepend('<i class="far fa-times-circle fa-2x"></i>');
+            $(`#input-${check}`).apppend('<i class="far fa-times-circle fa-2x"></i>');
         }
     }
 }
