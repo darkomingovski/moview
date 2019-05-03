@@ -2,8 +2,8 @@
   "users": [
     {
       "username": "darko.mingovski",
-      "name": "Darko",
-      "surname": "Mingovski",
+      "firstname": "Darko",
+      "lastname": "Mingovski",
       "email": "darko.mingovski@gmail.com",
       "password": "codetest",
       "id": 1,
@@ -21,16 +21,16 @@
       ],
       "planned": [
         284054,
-        287947,
         532671,
         522681,
-        458723
+        458723,
+        287947
       ]
     },
     {
       "username": "demo",
-      "name": "John",
-      "surname": "Doe",
+      "firstname": "John",
+      "lastname": "Doe",
       "email": "demo@demo.net",
       "password": "demo",
       "id": 2,
@@ -41,7 +41,7 @@
       "watched": [],
       "planned": [],
       "username": "test_user",
-      "name": "Jack",
+      "firstname": "Jack",
       "lastname": "Mackey",
       "email": "test_user@gmail.com",
       "password": "1234",

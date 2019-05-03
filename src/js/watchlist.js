@@ -1,69 +1,54 @@
-import axios from 'axios';
+import $ from "jquery";
+import { api, api_json } from './main';
 import { _renderItems } from './app';
 
-const serverUrl = `https://api.themoviedb.org/3`;
-const api = axios.create({
-    baseURL: `${serverUrl}`
-});
-api.defaults.timeout = 6000;
-
-const serverUrl_json = `http://localhost:3000`;
-const api_json = axios.create({
-    baseURL: `${serverUrl_json}`
-});
-api_json.defaults.timeout = 6000;
-
 async function addToPlanned() {
-    const movie_id = +event.currentTarget.parentElement.id;
+    const movie_id = parseInt(event.currentTarget.parentElement.id);
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
-    if (data.planned.includes(movie_id) == false) {
+    if (data.planned.includes(movie_id) === false) {
         data.planned.push(movie_id);
         await api_json.patch(`/users/${user}`, data);
-        $(`#planned_${+movie_id}`).toggleClass('far fas');
-        $(`#planned_${+movie_id}`).toggleClass('fa-star fa-star');
+        $(`#planned_${movie_id}`).toggleClass('fa-plus-square fa-minus-square');
     }
 }
 
 async function removeFromPlanned() {
-    const movie_id = +event.currentTarget.parentElement.id;
+    const movie_id = parseInt(event.currentTarget.parentElement.id);
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
     let position = data.planned.indexOf(movie_id);
-    if (position != -1) {
+    if (position !== -1) {
         data.planned.splice(position,1);
         await api_json.patch(`/users/${user}`, data);
-        $(`#planned_${+movie_id}`).toggleClass('far fas');
-        $(`#planned_${+movie_id}`).toggleClass('fa-star fa-star');
+        $(`#planned_${movie_id}`).toggleClass('fa-minus-square fa-plus-square');
     }
 }
 
 async function addToWatched() {
-    const movie_id = +event.currentTarget.parentElement.id;
+    const movie_id = parseInt(event.currentTarget.parentElement.id);
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
-    if (data.watched.includes(movie_id) == false) {
+    if (data.watched.includes(movie_id) === false) {
         data.watched.push(movie_id);
         await api_json.patch(`/users/${user}`, data);
-        $(`#watched_${+movie_id}`).toggleClass('far fas');
-        $(`#watched_${+movie_id}`).toggleClass('fa-eye-slash fa-eye');
+        $(`#watched_${movie_id}`).toggleClass('fa-eye-slash fa-eye');
     }
 }
 
 async function removeFromWatched() {
-    const movie_id = +event.currentTarget.parentElement.id;
+    const movie_id = parseInt(event.currentTarget.parentElement.id);
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
     let position = data.watched.indexOf(movie_id);
-    if (position != -1) {
+    if (position !== -1) {
         data.watched.splice(position,1);
         await api_json.patch(`/users/${user}`, data);
-        $(`#watched_${+movie_id}`).toggleClass('far fas');
-        $(`#watched_${+movie_id}`).toggleClass('fa-eye fa-eye-slash');
+        $(`#watched_${movie_id}`).toggleClass('fa-eye fa-eye-slash');
     }
 }
 

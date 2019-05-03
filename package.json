@@ -6,6 +6,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
     "acorn": "^6.1.1",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "spin.js": "^4.0.0",
     "webpack-cli": "^3.3.0"
@@ -38,6 +39,31 @@
     "build": "webpack -p --config ./webpack/webpack.config.js --display-error-details",
     "watch": "webpack -d --watch --config ./webpack/webpack.config.js --display-error-details",
     "test": "jest"
+  },
+  "jest": {
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!spin.js).+\\.js$"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/src/js/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/src/js/__mocks__/fileMock.js",
+      "^config$": "<rootDir>/configs/app-config.js"
+    }
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,8 @@
-import axios from 'axios';
+import $ from "jquery";
 import { Spinner } from 'spin.js';
 import { checkMovieDetailsFromResponse, checkMovieDetailsFromJson, checkMovieIconPlanned, checkMovieIconWatched } from './compare-db';
 import { recentlyWatched, plannedToWatch } from './watchlist';
+import { api } from './main';
 
 let spinner = {};
 function startSpinner() {
@@ -24,23 +25,11 @@ function startSpinner() {
         left: '50%',
         shadow: '0 0 1px transparent',
         position: 'absolute'
-       }
+       };
         let target = $("body")[0];
         spinner =  new Spinner(opts).spin(target);
         return spinner;
 }
-
-const serverUrl = `https://api.themoviedb.org/3`;
-const api = axios.create({
-    baseURL: `${serverUrl}`
-});
-api.defaults.timeout = 6000;
-
-const serverUrl_json = `http://localhost:3000`;
-const api_json = axios.create({
-    baseURL: `${serverUrl_json}`
-});
-api_json.defaults.timeout = 6000;
 
 function _renderApp() {
     const $user = localStorage.getItem('user');
@@ -83,31 +72,30 @@ nowPopular()
 async function _renderItems(response, query) {
     startSpinner();
     $('#app-title').empty();
-    let $title = query;
-    $title.appendTo('#app-title');
+    query.appendTo('#app-title');
     $('#item-container').empty();
     for(const a of response) {
         let genres = [];
-        const starred = ('fas'+' '+'fa-star');
-        const unStarred = ('far'+' '+'fa-star');
-        const eyed = ('fas'+' '+'fa-eye');
+        const plus = ('fas'+' '+'fa-plus-square');
+        const minus = ('fas'+' '+'fa-minus-square');
+        const eyed = ('far'+' '+'fa-eye');
         const unEyed = ('far'+' '+'fa-eye-slash');
         let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genres);
         let checkDetailsJson = await checkMovieDetailsFromJson(a.id, checkDetailsResponse[1]);
-        let emoji_star; let emoji_eye;
-        checkDetailsJson[0] == true ? emoji_star = starred : emoji_star = unStarred;
-        checkDetailsJson[1] == true ? emoji_eye = eyed : emoji_eye = unEyed;
+        let emoji_watch; let emoji_eye;
+        checkDetailsJson[0] === true ? emoji_watch = minus : emoji_watch = plus;
+        checkDetailsJson[1] === true ? emoji_eye = eyed : emoji_eye = unEyed;
         const $item = $(`
         <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}">
-        <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')";><img src="${checkDetailsResponse[0].poster_path}" alt=""></div>
-        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_star}" id="planned_${checkDetailsResponse[0].id}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}"></i></div>
+        <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')"><img src="${checkDetailsResponse[0].poster_path}" alt=""></div>
+        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_watch}" id="planned_${checkDetailsResponse[0].id}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}"></i></div>
         <div class="item-title">${checkDetailsResponse[0].original_title}</div>
         <div class="item-year">Released: ${(a.release_date).slice(0,4)}</div>
         <div class="item-genre">${checkDetailsJson[2].join(', ')}</div>
     </div>`);
     $item.appendTo('#item-container'); 
     }
-    $('.fa-star').on('click', checkMovieIconPlanned);
+    $('.fa-plus-square, .fa-minus-square').on('click', checkMovieIconPlanned);
     $('.fa-eye-slash, .fa-eye').on('click', checkMovieIconWatched);
     spinner.stop();
 }

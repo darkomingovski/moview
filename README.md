@@ -1,19 +1,19 @@
-# Projekat - Moview - 
+# Projekat - Moview
 
 [![Build Status][build-shield]]()
 [![Code][code-clean]]()
 [![Contributors][contributors-shield]]()
 
 <br />
+<h3 align="center">Movie and TV watchlist</h3>
 
 ## Project
 
-[![Moview]]()
+[![Moview][product-screenshot]]()
 
 ## Technology used
 
 <p align="center">
-    <img src="./visualstudiocode.png" alt="Logo" width="300" height="150">
 
 ![][html]&nbsp;
 ![][css]&nbsp;
@@ -24,7 +24,6 @@
 [![][axios]](https://www.npmjs.com/package/axios)
 <br>
 <p align="center">
-    <img src="./vscode.png" alt="Logo" width="700" height="350">
 <br>
 
 ## Installation

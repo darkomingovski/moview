@@ -1,9 +1,23 @@
 import '@babel/polyfill';
 import '../css/main.css';
-import {userRegistrationForm, createUser, validateFormInput } from './register';
-import {userLogin, userLogout} from './login';
-import {_renderApp, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch} from './app';
+import $ from "jquery";
+import { userRegistrationForm, createUser, validateFormInput } from './register';
+import { userLogin, userLogout } from './login';
+import { _renderApp, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch } from './app';
+import axios from "axios";
 'use strict';
+
+const serverUrl = `https://api.themoviedb.org/3`;
+const api = axios.create({
+    baseURL: `${serverUrl}`
+});
+api.defaults.timeout = 6000;
+
+const serverUrl_json = `http://localhost:3000`;
+const api_json = axios.create({
+    baseURL: `${serverUrl_json}`
+});
+api_json.defaults.timeout = 6000;
 
 function _renderMain() {
     const $login = $(`<div class="grid-container">
@@ -27,9 +41,9 @@ function _renderMain() {
     <div class="login-bottom">Don't have an account?&nbsp;<a href="#" id="register-link">Sign up now!</a></div></form>
     </div>
     <div class="main">
-        <img src="./img/MOVIEW.png" alt="" srcset="">
+        <img src="./img/MOVIEW.png" alt="Logo">
     </div>
-    <div class="footer"><img src="./img/tmdblogo.png" alt="" srcset=""><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
+    <div class="footer"><img src="./img/tmdblogo.png" alt="TMBD-logo"><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
 </div>`);
 $login.appendTo('body');
 userRegistrationForm();
@@ -45,7 +59,7 @@ function onLoadHTML() {
     }
 }
 function toggleRegister() {
-    $('#register-link, #close-register').click(function() {$('#registration-form').slideToggle();});
+    $('#register-link, #close-register').on('click', () => $('#registration-form').slideToggle());
 }
 function eventsAll() {
     $('#register-button').on('click', createUser);
@@ -57,7 +71,11 @@ function eventsAll() {
     $('#planned').on('click', plannedToWatch);
     $('#popular').on('click', nowPopular);
     $('.logout-button').on('click', userLogout);
-    $('.validity').blur(validateFormInput);
+    $('.validity').on('blur', validateFormInput);
 }
 
-$(document).on('load', onLoadHTML(), toggleRegister(), eventsAll());
+onLoadHTML();
+toggleRegister();
+eventsAll();
+
+export { api, api_json }
