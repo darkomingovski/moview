@@ -39,7 +39,7 @@ function _renderApp() {
     <div class="fixed-content">
     <div class="user">
         <img src="img/user.png" alt="">
-        <h2>Hi, ${$user}</h2>
+        <h3>Hi, ${$user}</h3>
     </div>
     <div class="nav">
     <ul>

@@ -68,14 +68,12 @@ function validateFormInput() {
     let input = event.currentTarget.value;
     if (RegEx[checkRegexType].test(input) === true) {
             count = 0;
-            $inputCheck.find('.fa-times-circle').remove();
-            $inputCheck.find('.fa-check-circle').remove();
+            $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
             $inputCheck.append('<i class="far fa-check-circle fa-2x"></i>');
         }
     else {
             count = 1;
-            $inputCheck.find('.fa-times-circle').remove();
-            $inputCheck.find('.fa-check-circle').remove();
+            $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
             $inputCheck.append('<i class="far fa-times-circle fa-2x"></i>');
         }
 

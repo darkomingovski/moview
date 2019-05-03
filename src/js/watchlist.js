@@ -1,6 +1,6 @@
 import $ from "jquery";
-import { api, api_json } from './main';
-import { _renderItems } from './app';
+import {api, api_json} from './main';
+import {_renderItems} from './app';
 
 async function addToPlanned() {
     const movie_id = parseInt(event.currentTarget.parentElement.id);
@@ -21,7 +21,7 @@ async function removeFromPlanned() {
     let data = response.data;
     let position = data.planned.indexOf(movie_id);
     if (position !== -1) {
-        data.planned.splice(position,1);
+        data.planned.splice(position, 1);
         await api_json.patch(`/users/${user}`, data);
         $(`#planned_${movie_id}`).toggleClass('fa-minus-square fa-plus-square');
     }
@@ -46,7 +46,7 @@ async function removeFromWatched() {
     let data = response.data;
     let position = data.watched.indexOf(movie_id);
     if (position !== -1) {
-        data.watched.splice(position,1);
+        data.watched.splice(position, 1);
         await api_json.patch(`/users/${user}`, data);
         $(`#watched_${movie_id}`).toggleClass('fa-eye fa-eye-slash');
     }
@@ -80,4 +80,4 @@ async function plannedToWatch() {
     _renderItems(plannedList, $title);
 }
 
-export { addToPlanned, removeFromPlanned, addToWatched, removeFromWatched, recentlyWatched, plannedToWatch }
+export {addToPlanned, removeFromPlanned, addToWatched, removeFromWatched, recentlyWatched, plannedToWatch}
