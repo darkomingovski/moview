@@ -75,12 +75,12 @@ async function _renderItems(response, query) {
     query.appendTo('#app-title');
     $('#item-container').empty();
     for(const a of response) {
-        let genres = [];
+        let genresList = [];
         const plus = ('fas'+' '+'fa-plus-square');
         const minus = ('fas'+' '+'fa-minus-square');
         const eyed = ('far'+' '+'fa-eye');
         const unEyed = ('far'+' '+'fa-eye-slash');
-        let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genres);
+        let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genresList);
         let checkDetailsJson = await checkMovieDetailsFromJson(a.id, checkDetailsResponse[1]);
         let emoji_watch; let emoji_eye;
         checkDetailsJson[0] === true ? emoji_watch = minus : emoji_watch = plus;
