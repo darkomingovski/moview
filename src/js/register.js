@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { createUser } from './user';
 import { api_json } from './main';
 
 function userRegistrationForm() {
@@ -36,25 +37,14 @@ async function postIntoBase(location, obj, message) {
     alert(`${message}`);
 }
 let count = 0;
-function createUser() {
-    const userObj = {};
-    userObj.watched = [];
-    userObj.planned = [];
-    const $form = $("#registration-form");
-    $form.find("input").each(function () {
-        userObj[this.name] = $(this).val();
-    });
-    delete userObj.passwordRepeat;
-    userObj['favorites'] = [];
-    registerUser(userObj);
-}
-
-function registerUser(obj) {
+function registerUser() {
+    let obj = createUser(count);
     const check = Object.values(obj);
     const $form = $("#registration-form");
+    obj == null ? count++ : count;
     check.includes("") ? count++ : count;
     if (count === 0) {
-        const message = 'Uspesno ste se registrovali';
+        const message = 'Registration successful';
         (async () => await postIntoBase('users', obj, message))();
         setTimeout(() => { $form.slideToggle(); $(".grid-container").toggleClass("grid-container-blur"); }, 500);
         $form[0].reset();
@@ -77,15 +67,18 @@ function validateFormInput() {
     };
     let input = event.currentTarget.value;
     if (RegEx[checkRegexType].test(input) === true) {
+            count = 0;
             $inputCheck.find('.fa-times-circle').remove();
             $inputCheck.find('.fa-check-circle').remove();
             $inputCheck.append('<i class="far fa-check-circle fa-2x"></i>');
         }
     else {
+            count = 1;
             $inputCheck.find('.fa-times-circle').remove();
             $inputCheck.find('.fa-check-circle').remove();
             $inputCheck.append('<i class="far fa-times-circle fa-2x"></i>');
         }
+
 }
 
-export { userRegistrationForm, validateFormInput, createUser }
+export { userRegistrationForm, validateFormInput, registerUser, count }

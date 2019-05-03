@@ -36,21 +36,4 @@ function userLogout() {
         location.href = 'index.html';
 }
 
-function fizzBuzz(number) {
-    const isDivisibleByThree = number % 3 === 0;
-    const isDivisibleByFive =  number % 5 === 0;
-    
-    if (isDivisibleByThree && isDivisibleByFive) {
-        return 'FizzBuzz';
-    }
-    else if (isDivisibleByThree) {
-        return 'Fizz';
-    }
-    else if (isDivisibleByFive) {
-        return 'Buzz';
-    }
-
-    return number.toString();
-}
-
-export { userLogin, userLogout, fizzBuzz }
+export { userLogin, userLogout }

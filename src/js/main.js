@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import '../css/main.css';
 import $ from "jquery";
-import { userRegistrationForm, createUser, validateFormInput } from './register';
+import { userRegistrationForm, validateFormInput, registerUser } from './register';
 import { userLogin, userLogout } from './login';
 import { _renderApp, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch } from './app';
 import axios from "axios";
@@ -62,7 +62,7 @@ function toggleRegister() {
     $('#register-link, #close-register').on('click', () => $('#registration-form').slideToggle());
 }
 function eventsAll() {
-    $('#register-button').on('click', createUser);
+    $('#register-button').on('click', registerUser);
     $('#login-button').on('click', userLogin);
     $('#movie_search_button').on('click', searchFromDB);
     $('#movies').on('click', newMoviesInTheater);
@@ -74,8 +74,6 @@ function eventsAll() {
     $('.validity').on('blur', validateFormInput);
 }
 
-onLoadHTML();
-toggleRegister();
-eventsAll();
+$(document).on('load', onLoadHTML(), toggleRegister(), eventsAll());
 
 export { api, api_json }

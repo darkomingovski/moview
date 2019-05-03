@@ -61,8 +61,7 @@
     },
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/src/js/__mocks__/styleMock.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/src/js/__mocks__/fileMock.js",
-      "^config$": "<rootDir>/configs/app-config.js"
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/src/js/__mocks__/fileMock.js"
     }
   },
   "repository": {
