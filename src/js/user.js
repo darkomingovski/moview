@@ -16,8 +16,7 @@ function createUser(number) {
         });
         delete userObj.passwordRepeat;
         return userObj;
-    }
-    else if (inValid === number) {
+    } else if (inValid === number) {
         userObj = null;
         return userObj;
     }

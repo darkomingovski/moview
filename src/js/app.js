@@ -43,13 +43,13 @@ function _renderApp() {
     </div>
     <div class="nav">
     <ul>
-        <li id="movies"><i class="fas fa-film"></i>MOVIES</li>
-        <li id="shows"><i class="fas fa-tv"></i>TV SHOWS</li>
+        <li id="movies" title="Movie"><i class="fas fa-film"></i>MOVIES</li>
+        <li id="shows" title="TV"><i class="fas fa-tv"></i>TV SHOWS</li>
         <li id="recently" title="Movie"><i class="fas fa-history"></i>WATCHED MOVIES</li>
         <li id="recently-tv" title="TV"><i class="fas fa-history"></i>WATCHED TV SHOWS</li>
         <li id="planned" title="Movie"><i class="fas fa-play-circle"></i>MOVIES PLANNED</li>
         <li id="planned-tv" title="TV"><i class="fas fa-play-circle"></i>TV SHOWS PLANNED</li>
-        <li id="popular"><i class="fas fa-fire-alt"></i>NOW POPULAR</li>
+        <li id="popular" title="Movie"><i class="fas fa-fire-alt"></i>NOW POPULAR</li>
     </ul>
     <div id="logout">
     <div><i class="fas fa-sign-out-alt fa-2x logout-button" title="Logout"></i></div>

@@ -70,8 +70,7 @@ async function recentlyWatched() {
     }
     if (type.slice(7) === 'Movie') {
         $title = $(`<h2>your recently watched movies</h2>`)
-    }
-    else {
+    } else {
         $title = $(`<h2>your recently watched tv shows</h2>`)
     }
     _renderItems(watchedList, $title);
@@ -91,11 +90,9 @@ async function plannedToWatch() {
     }
     if (type.slice(7) === 'Movie') {
         $title = $(`<h2>movies planned to watch</h2>`)
-    }
-    else {
+    } else {
         $title = $(`<h2>tv shows planned to watch</h2>`)
     }
-
     _renderItems(plannedList, $title);
 }
 

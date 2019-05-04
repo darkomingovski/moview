@@ -23,9 +23,7 @@ function userRegistrationForm() {
                     </div>
                     <div id="input-password-repeat">
                     <input type="password" name="passwordRepeat" id="password-repeat" placeholder="repeat&nbsp;password" required>
-                    </div>
-                    </div>
-    </div>
+                    </div></div></div>
     <div class="button-wrapper">
     <button type="reset" class="register-button">RESET</button>
     <button type="button" class="register-button" id="register-button">SEND</button></form>`);
@@ -48,8 +46,7 @@ function registerUser() {
         (async () => await postIntoBase('users', obj, message))();
         setTimeout(() => { $form.slideToggle(); $(".grid-container").toggleClass("grid-container-blur"); }, 500);
         $form[0].reset();
-    }
-    else {
+    } else {
         alert('One or more fields have an error. Please check and try again.');
         count = 0;
     }
@@ -67,15 +64,14 @@ function validateFormInput() {
     };
     let input = event.currentTarget.value;
     if (RegEx[checkRegexType].test(input) === true) {
-            count = 0;
-            $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
-            $inputCheck.append('<i class="far fa-check-circle fa-2x"></i>');
-        }
-    else {
-            count = 1;
-            $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
-            $inputCheck.append('<i class="far fa-times-circle fa-2x"></i>');
-        }
+        count = 0;
+        $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
+        $inputCheck.append('<i class="far fa-check-circle fa-2x"></i>');
+    } else {
+        count = 1;
+        $inputCheck.find('.fa-check-circle, .fa-times-circle').remove();
+        $inputCheck.append('<i class="far fa-times-circle fa-2x"></i>');
+    }
 
 }
 

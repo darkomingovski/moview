@@ -23,8 +23,7 @@ async function userLogin() {
         $('#login-form').slideToggle();
         $(".grid-container").toggleClass("grid-container-blur");
         location.href = 'app.html';
-    } 
-    else {
+    } else {
         $('#username').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#password').css('border', '1.5px solid rgb(250, 100, 100)');
         $('#alert').html(`Invalid username and password. Please try again.`).css('color', 'rgb(250, 100, 100)');
@@ -32,8 +31,8 @@ async function userLogin() {
 }
 
 function userLogout() {
-        localStorage.clear();
-        location.href = 'index.html';
+    localStorage.clear();
+    location.href = 'index.html';
 }
 
 export { userLogin, userLogout }

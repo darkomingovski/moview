@@ -42,18 +42,34 @@
       "email": "demo@demo.net",
       "password": "demo",
       "id": 2,
-      "watched": [],
-      "planned": []
-    },
-    {
-      "watched": [],
-      "planned": [],
-      "username": "test_user",
-      "firstname": "Jack",
-      "lastname": "Mackey",
-      "email": "test_user@gmail.com",
-      "password": "1234",
-      "id": 3
+      "watchedMovie": [
+        299534,
+        456740,
+        438650,
+        450465,
+        535167
+      ],
+      "watchedTV": [
+        1399,
+        1412,
+        1416,
+        4614,
+        1434
+      ],
+      "plannedMovie": [
+        532671,
+        458723,
+        457799,
+        376865,
+        424783
+      ],
+      "plannedTV": [
+        456,
+        1403,
+        17610,
+        60735,
+        69050
+      ]
     }
   ],
   "genres": [

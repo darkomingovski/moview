@@ -38,11 +38,8 @@ function _renderMain() {
     <div class="button-wrapper-login">
     <button type="reset" class="button-login">RESET</button>
     <button type="button" class="button-login" id="login-button">LOG&nbsp;IN</button></div>
-    <div class="login-bottom">Don't have an account?&nbsp;<a href="#" id="register-link">Sign up now!</a></div></form>
-    </div>
-    <div class="main">
-        <img src="./img/MOVIEW.png" alt="Logo">
-    </div>
+    <div class="login-bottom">Don't have an account?&nbsp;<a href="#" id="register-link">Sign up now!</a></div></form></div>
+    <div class="main"><img src="./img/MOVIEW.png" alt="Logo"></div>
     <div class="footer"><img src="./img/tmdblogo.png" alt="TMBD-logo"><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
 </div>`);
     $login.appendTo('body');
@@ -53,8 +50,7 @@ function onLoadHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return _renderMain();
-    }
-    else if (page.search('/app.html') >= 0) {
+    } else if (page.search('/app.html') >= 0) {
         return _renderApp();
     }
 }
