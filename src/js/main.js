@@ -45,15 +45,15 @@ function _renderMain() {
     </div>
     <div class="footer"><img src="./img/tmdblogo.png" alt="TMBD-logo"><div>This product uses the TMDb API but is not endorsed or certified by TMDb.</div></div>
 </div>`);
-$login.appendTo('body');
-userRegistrationForm();
+    $login.appendTo('body');
+    userRegistrationForm();
 }
 
 function onLoadHTML() {
     const page = location.href;
     if (page.search('/index.html') >= 0) {
         return _renderMain();
-    } 
+    }
     else if (page.search('/app.html') >= 0) {
         return _renderApp();
     }
@@ -69,6 +69,8 @@ function eventsAll() {
     $('#shows').on('click', latestOnTv);
     $('#recently').on('click', recentlyWatched);
     $('#planned').on('click', plannedToWatch);
+    $('#recently-tv').on('click', recentlyWatched);
+    $('#planned-tv').on('click', plannedToWatch);
     $('#popular').on('click', nowPopular);
     $('.logout-button').on('click', userLogout);
     $('.validity').on('blur', validateFormInput);

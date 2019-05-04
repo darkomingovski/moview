@@ -1,9 +1,14 @@
-import {createUser} from '../user';
+import { createUser } from '../user';
 
 describe('createUser', () => {
 
     it('should return object', () => {
-        expect(createUser(0)).toEqual({"favorites": [], "planned": [], "watched": []});
+        expect(createUser(0)).toEqual({
+            "plannedMovie": [],
+            "plannedTV": [],
+            "watchedMovie": [],
+            "watchedTV": [],
+        });
     });
 
     it('should return null', () => {

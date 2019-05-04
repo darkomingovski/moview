@@ -7,7 +7,7 @@
       "email": "darko.mingovski@gmail.com",
       "password": "codetest",
       "id": 1,
-      "watched": [
+      "watchedMovie": [
         210577,
         286217,
         110415,
@@ -19,12 +19,20 @@
         157336,
         27205
       ],
-      "planned": [
+      "watchedTV": [
+        456,
+        1402
+      ],
+      "plannedMovie": [
         284054,
         532671,
         522681,
         458723,
         287947
+      ],
+      "plannedTV": [
+        60735,
+        62286
       ]
     },
     {
@@ -45,7 +53,6 @@
       "lastname": "Mackey",
       "email": "test_user@gmail.com",
       "password": "1234",
-      "favorites": [],
       "id": 3
     }
   ],

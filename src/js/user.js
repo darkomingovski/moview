@@ -6,9 +6,10 @@ function createUser(number) {
     let userObj = {};
 
     if (valid === number) {
-        userObj.watched = [];
-        userObj.planned = [];
-        userObj.favorites = [];
+        userObj.watchedMovie = [];
+        userObj.watchedTV = [];
+        userObj.plannedMovie = [];
+        userObj.plannedTV = [];
         const $form = $("#registration-form");
         $form.find("input").each(function () {
             userObj[this.name] = this.value;

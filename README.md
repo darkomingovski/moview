@@ -107,4 +107,4 @@ Project Link: [Git Hub Repo - Moview](https://github.com/darkomingovski/moview)
 [json]: https://img.shields.io/badge/JSON-v0.14.2-green.svg?style=popout&logo=json
 [webpack]: https://img.shields.io/badge/WebPack-v4.29.6-blue.svg?style=popout&logo=webpack
 [axios]: https://img.shields.io/badge/AXIOS-v0.18-lightblue.svg?style=popout&logo=codesandbox
-[product-screenshot]: ./ss.jpg
+[product-screenshot]: 
