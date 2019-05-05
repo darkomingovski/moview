@@ -1,14 +1,18 @@
-# Projekat - Moview
+# Final Exam - Front End Web Development Course - CODE By Comtrade
 
 [![Build Status][build-shield]]()
 [![Code][code-clean]]()
 <br />
 
-<h3 align="center">Movie and TV watchlist</h3>
+<h1 align="center">Movie and TV watchlist</h1>
 
 ## Project
 
 [![Moview][product-screenshot]]()
+
+## Project description
+
+User friendly movie and tv show watchlist. User can browse whole TMDb database via TMDb api. Application has a sections as now popular movies, last aired tv shows, new movies in teathers etc. Movies and TV shows can be added to or removed from list of watched items and from planned items list too.
 
 ## Technology used
 
