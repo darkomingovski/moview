@@ -2,9 +2,8 @@
 
 [![Build Status][build-shield]]()
 [![Code][code-clean]]()
-[![Contributors][contributors-shield]]()
-
 <br />
+
 <h3 align="center">Movie and TV watchlist</h3>
 
 ## Project
@@ -40,39 +39,53 @@ npm install or npm i
 ```sh
 npm run server
 ```
+4. Start project
+```sh
+run index.html and login with demo/demo
+```
 
 ## Project structure
 ```sh
 .
 ├── dist
-│   └── main.bundle.js
+|   ├── js
+|   │    └── main.bundle.js
+│   └── main.bundle.css
 ├── node_modules
+├── readme
 ├── src
 │   ├── css
+|   |   ├── app.css
 │   │   └── main.css
 │   ├── img
 │   ├── js
-│   │   ├── vendor
-│   │   │   └── jquery.js
-│   │   ├── ad.js
-│   │   ├── main.js
-│   │   ├── publish_ad.js
-│   │   ├── register.js
-│   │   └── user_panel.js
-│   ├── .edittorconfig
-│   ├── ad.html
-│   ├── Favicon.ico
-│   ├── index.html
-│   ├── publish_ad.html
-│   ├── register.html
-│   └── user_panel.html
-├── .babelrc
+│   │   ├── __mocks__
+|   |   |       ├── fileMock.js
+│   │   │       └── styleMock.js
+│   │   ├── test
+|   |   |     ├── compare-db.test.js
+|   |   |     └── user.test.js
+│   │   ├── app.js
+│   │   ├── compare-db.js
+│   │   ├── login.js
+|   |   ├── main.js
+|   |   ├── register.js
+|   |   ├── user.js
+│   │   └── watchlist.js
+│   ├── app.html
+│   └── index.html
+├── webpack
+|       ├── .eslintrc
+|       ├── loaders.js
+|       ├── plugins.js
+|       ├── postcss.config.js
+|       └── webpack.config.js
 ├── .gitignore
+├── babel.config.js
 ├── db.json
 ├── package-lock.json
 ├── package.json
-├── README.md
-└── webpack.config.js
+└── README.md
 ```
 
 ## Developers on this project
@@ -95,11 +108,11 @@ Project Link: [Git Hub Repo - Moview](https://github.com/darkomingovski/moview)
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
+* [Spinner](https://spin.js.org/)
 
 <!-- LINKS & IMAGES -->
 [build-shield]: https://img.shields.io/badge/build-passing-brightgreen.svg?style=popout
 [code-clean]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=popout
-[contributors-shield]: https://img.shields.io/badge/contributors-2-orange.svg?style=popout
 [html]: https://img.shields.io/badge/HTML-v5-red.svg?style=popout&logo=html5
 [css]: https://img.shields.io/badge/CSS-v3-blue.svg?style=popout&logo=css3
 [js]: https://img.shields.io/badge/JavaScript-ES6-yellow.svg?style=popout&logo=javascript
@@ -107,4 +120,4 @@ Project Link: [Git Hub Repo - Moview](https://github.com/darkomingovski/moview)
 [json]: https://img.shields.io/badge/JSON-v0.14.2-green.svg?style=popout&logo=json
 [webpack]: https://img.shields.io/badge/WebPack-v4.29.6-blue.svg?style=popout&logo=webpack
 [axios]: https://img.shields.io/badge/AXIOS-v0.18-lightblue.svg?style=popout&logo=codesandbox
-[product-screenshot]: 
+[product-screenshot]: ./readme/project.png
