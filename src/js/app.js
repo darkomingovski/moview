@@ -78,6 +78,9 @@ async function _renderItems(response, query) {
     query.appendTo('#app-title');
     $('#item-container').empty();
     for (const a of response) {
+        if (a.media_type === 'person') {
+            continue;
+        }
         let genresList = [];
         const plus = ('fas' + ' ' + 'fa-plus-square');
         const minus = ('fas' + ' ' + 'fa-minus-square');
