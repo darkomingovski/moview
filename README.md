@@ -1,4 +1,4 @@
-# Final Exam - Front End Web Development Course - CODE By Comtrade
+# Front End Web Development Course - CODE By Comtrade
 
 [![Build Status][build-shield]]()
 [![Code][code-clean]]()
