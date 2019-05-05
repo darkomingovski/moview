@@ -26,7 +26,7 @@ User friendly movie and tv show watchlist. User can browse whole TMDb database v
 [![][json]](https://my-json-server.typicode.com/)&nbsp;
 [![][webpack]](https://webpack.js.org/)&nbsp;
 [![][axios]](https://www.npmjs.com/package/axios)&nbsp;
-[![][jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![][jest]](https://github.com/facebook/jest)
 <br>
 <p align="center">
 <br>
@@ -122,8 +122,9 @@ Project Link: [Git Hub Repo - Moview](https://github.com/darkomingovski/moview)
 [html]: https://img.shields.io/badge/HTML-v5-red.svg?style=popout&logo=html5
 [css]: https://img.shields.io/badge/CSS-v3-blue.svg?style=popout&logo=css3
 [js]: https://img.shields.io/badge/JavaScript-ES6-yellow.svg?style=popout&logo=javascript
-[jquery]: https://img.shields.io/badge/jQuery-v3.3.1-violet.svg?style=popout&logo=jquery
+[jquery]: https://img.shields.io/badge/jQuery-v3.4.0-violet.svg?style=popout&logo=jquery
 [json]: https://img.shields.io/badge/JSON-v0.14.2-green.svg?style=popout&logo=json
-[webpack]: https://img.shields.io/badge/WebPack-v4.29.6-blue.svg?style=popout&logo=webpack
+[webpack]: https://img.shields.io/badge/WebPack-v4.30.0-blue.svg?style=popout&logo=webpack
 [axios]: https://img.shields.io/badge/AXIOS-v0.18-lightblue.svg?style=popout&logo=codesandbox
+[jest]: https://img.shields.io/badge/Jest-24.7.1-red.svg?style=popout&logo=appveyor
 [product-screenshot]: ./readme/project.png
