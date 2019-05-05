@@ -1,4 +1,5 @@
 # Front End Web Development Course - CODE By Comtrade
+<h1 align="center">Final exam</h1>
 
 [![Build Status][build-shield]]()
 [![Code][code-clean]]()
@@ -8,7 +9,7 @@
 
 ## Project
 
-[![Moview][product-screenshot]]()
+[![Moview][product-screenshot]](https://github.com/darkomingovski/moview)
 
 ## Project description
 

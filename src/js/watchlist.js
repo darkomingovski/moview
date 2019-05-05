@@ -69,9 +69,9 @@ async function recentlyWatched() {
         watchedList.push(resultFromDbQuery)
     }
     if (type.slice(7) === 'Movie') {
-        $title = $(`<h2>your recently watched movies</h2>`)
+        $title = $(`<h2>recently watched movies</h2>`)
     } else {
-        $title = $(`<h2>your recently watched tv shows</h2>`)
+        $title = $(`<h2>recently watched tv shows</h2>`)
     }
     _renderItems(watchedList, $title);
 }
