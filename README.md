@@ -33,7 +33,7 @@ User friendly movie and tv show watchlist. User can browse whole TMDb database v
 
 1. Clone the repo
 ```sh
-git clone https:://github.com/darkomingovski/moview.git
+git clone https://github.com/darkomingovski/moview.git
 ```
 2. Install NPM packages
 ```sh
