@@ -26,7 +26,7 @@ User friendly movie and tv show watchlist. User can browse whole TMDb database v
 [![][json]](https://my-json-server.typicode.com/)&nbsp;
 [![][webpack]](https://webpack.js.org/)&nbsp;
 [![][axios]](https://www.npmjs.com/package/axios)&nbsp;
-[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![][jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 <br>
 <p align="center">
 <br>
