@@ -73,7 +73,6 @@ function _renderApp() {
 
 async function _renderItems(response, query) {
     window.scrollTo(0, 0);
-    startSpinner();
     $('#app-title').empty();
     query.appendTo('#app-title');
     $('#item-container').empty();
@@ -88,13 +87,15 @@ async function _renderItems(response, query) {
         const unEyed = ('far' + ' ' + 'fa-eye-slash');
         let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genresList);
         let checkDetailsJson = await checkMovieDetailsFromJson(a.id, checkDetailsResponse[1], a.type);
-        let emoji_watch; let emoji_eye;
+        let emoji_watch; let emoji_eye; let title_watched; let title_planned;
         checkDetailsJson[0] === true ? emoji_watch = minus : emoji_watch = plus;
         checkDetailsJson[1] === true ? emoji_eye = eyed : emoji_eye = unEyed;
+        emoji_watch === minus ? title_planned = 'remove from planned' : title_planned = 'add to planned';
+        emoji_eye === eyed ? title_watched = 'remove from watched' : title_watched = 'add to watched';
         const $item = $(`
-        <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}" title="${checkDetailsResponse[0].type}">
+        <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}">
         <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')"><img src="${checkDetailsResponse[0].poster_path}" alt=""></div>
-        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_watch}" id="planned_${checkDetailsResponse[0].id}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}"></i></div>
+        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}" data-type="${checkDetailsResponse[0].type}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_watch}" id="planned_${checkDetailsResponse[0].id}" title="${title_planned}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}" title="${title_watched}"></i></div>
         <div class="item-title">${checkDetailsResponse[0].original_title}</div>
         <div class="item-year">Released: ${(a.release_date).slice(0, 4)}</div>
         <div class="item-genre">${checkDetailsJson[2].join(', ')}</div>
@@ -107,6 +108,7 @@ async function _renderItems(response, query) {
 }
 
 async function searchFromDB() {
+    startSpinner();
     const $input = $('#movie_search').val();
     const response = await api.get(`/search/multi?api_key=bc686fdcbe90e509852ae370ae0a46f7&query=${$input}`);
     let resultFromDbQuery = response.data.results;
@@ -115,6 +117,7 @@ async function searchFromDB() {
 }
 
 async function newMoviesInTheater() {
+    startSpinner();
     const response = await api.get(`/movie/now_playing?api_key=bc686fdcbe90e509852ae370ae0a46f7&language=en-US&page=1`);
     let resultFromDbQuery = response.data.results;
     let $title = $(`<h2>now playing in theaters</h2>`);
@@ -122,6 +125,7 @@ async function newMoviesInTheater() {
 }
 
 async function latestOnTv() {
+    startSpinner();
     const response = await api.get(`/tv/on_the_air?api_key=bc686fdcbe90e509852ae370ae0a46f7&language=en-US&page=1`);
     let resultFromDbQuery = response.data.results;
     let $title = $(`<h2>latest aired on tv</h2>`);
@@ -129,10 +133,11 @@ async function latestOnTv() {
 }
 
 async function nowPopular() {
+    startSpinner();
     const response = await api.get(`/movie/popular?api_key=bc686fdcbe90e509852ae370ae0a46f7&language=en-US&page=1`);
     let resultFromDbQuery = response.data.results;
     let $title = $(`<h2>currently popular movies</h2>`);
     _renderItems(resultFromDbQuery, $title)
 }
 
-export { _renderApp, _renderItems, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch }
+export { _renderApp, _renderItems, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch, startSpinner }

@@ -31,10 +31,7 @@ button {
     border-radius: 4px;
     box-sizing: border-box;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-    background-image: url(../src/img/sand.gif);
-    background-repeat: repeat;
-    background-position: top center;
-    background-attachment: fixed;
+    background-color: rgba(42, 42, 42);
     color: white;
     cursor: pointer;
     font-size: 1vw;
@@ -159,7 +156,51 @@ input {
 .fa-check-circle, .fa-times-circle {
     margin-top: 2%;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1080px) {
+    body {
+        font-size : 1.5vw;
+    }
+    .grid-container {
+        grid-template-areas:'main main''login login''footer footer';
+    }
+    #registration-form {
+        top: 42vh;
+        left: 4vw;
+        width: 90vw;
+        font-size: 1.5vw;
+    }
+    #form-title {
+        font-size: 3vw;
+    }
+    .login {
+        width: 100vw;
+    }
+    #login-form {
+        width: 75%;
+        margin: -5vh auto 1vh auto;
+    }
+    .main {
+        width: 100vw;
+    }
+    .main img {
+        margin-left: 10%;
+        padding-top: 0;
+    }
+    .user {
+        width: 24.7vw;
+        height: 25vh;
+    }
+    .user img {
+        width: 50%;
+        padding-top: 5%;
+    }
+    .nav {
+        width: 24.7vw;
+        height: 85vh;
+    }
+    .app-grid-container {
+        grid-template-columns: 24.7vw auto;
+    }
     .form-left {
         margin: 0 4%;
     }
@@ -169,13 +210,61 @@ input {
     input {
         width: 78%;
     }
+    .dbItem {
+        width: 45%;
+        margin: 2% 2%;
+    }
+    #item-container {
+        padding: 2% 1%;
+    }
+    .nav ul {
+        padding-left: 10%;
+    }
+    button, input {
+        font-size: 1.5vw;
+    }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 720px) {
+    body {
+        font-size : 2.5vw;
+    }
     .fa-check-circle, .fa-times-circle {
         margin-top: 9%;
     }
     input {
         width: 75%;
+    }
+    .user {
+        width: 34.7vw;
+    }
+    .nav {
+        width: 34.7vw;
+    }
+    .app-grid-container {
+        grid-template-columns: 34.7vw auto;
+    }
+    #registration-form {
+        top: 22vh;
+    }
+    .dbItem {
+        width: 95%;
+    }
+    #movie_search_button {
+        width: 25%;
+        padding: 4% 2%;
+        margin: 0 5%;
+    }
+    #item-container {
+        padding: 2% 5%;
+    }
+    .search input {
+        width: 65%;
+    }
+    .nav ul {
+        padding-left: 5%;
+    }
+    button, input {
+        font-size: 2vw;
     }
 }
 @keyframes spinner-line-fade-more {

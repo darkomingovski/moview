@@ -1,10 +1,10 @@
 import $ from "jquery";
 import { api, api_json } from './main';
-import { _renderItems } from './app';
+import { _renderItems, startSpinner } from './app';
 
 async function addToPlanned() {
     const movie_id = parseInt(event.currentTarget.parentElement.id);
-    const type = 'planned' + event.currentTarget.parentElement.parentElement.title;
+    const type = 'planned' + event.currentTarget.parentElement.getAttribute("data-type");
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
@@ -17,7 +17,7 @@ async function addToPlanned() {
 
 async function removeFromPlanned() {
     const movie_id = parseInt(event.currentTarget.parentElement.id);
-    const type = 'planned' + event.currentTarget.parentElement.parentElement.title;
+    const type = 'planned' + event.currentTarget.parentElement.getAttribute("data-type");
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
@@ -31,7 +31,7 @@ async function removeFromPlanned() {
 
 async function addToWatched() {
     const movie_id = parseInt(event.currentTarget.parentElement.id);
-    const type = 'watched' + event.currentTarget.parentElement.parentElement.title;
+    const type = 'watched' + event.currentTarget.parentElement.getAttribute("data-type");
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
@@ -44,7 +44,7 @@ async function addToWatched() {
 
 async function removeFromWatched() {
     const movie_id = parseInt(event.currentTarget.parentElement.id);
-    const type = 'watched' + event.currentTarget.parentElement.parentElement.title;
+    const type = 'watched' + event.currentTarget.parentElement.getAttribute("data-type");
     const user = localStorage.getItem('id');
     const response = await api_json.get(`/users/${user}`);
     let data = response.data;
@@ -57,6 +57,7 @@ async function removeFromWatched() {
 }
 
 async function recentlyWatched() {
+    startSpinner();
     const type = 'watched' + event.target.title;
     const user = localStorage.getItem('id');
     const response_json = await api_json.get(`/users/${user}`);
@@ -77,6 +78,7 @@ async function recentlyWatched() {
 }
 
 async function plannedToWatch() {
+    startSpinner();
     const type = 'planned' + event.target.title;
     const user = localStorage.getItem('id');
     const response_json = await api_json.get(`/users/${user}`);
