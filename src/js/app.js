@@ -81,10 +81,10 @@ async function _renderItems(response, query) {
             continue;
         }
         let genresList = [];
-        const plus = ('fas' + ' ' + 'fa-plus-square');
-        const minus = ('fas' + ' ' + 'fa-minus-square');
-        const eyed = ('far' + ' ' + 'fa-eye');
-        const unEyed = ('far' + ' ' + 'fa-eye-slash');
+        const plus = (`fas fa-plus-square`);
+        const minus = (`fas fa-minus-square`);
+        const eyed = (`far fa-eye`);
+        const unEyed = (`far fa-eye-slash`);
         let checkDetailsResponse = await checkMovieDetailsFromResponse(a, genresList);
         let checkDetailsJson = await checkMovieDetailsFromJson(a.id, checkDetailsResponse[1], a.type);
         let emoji_watch; let emoji_eye; let title_watched; let title_planned;
@@ -92,12 +92,13 @@ async function _renderItems(response, query) {
         checkDetailsJson[1] === true ? emoji_eye = eyed : emoji_eye = unEyed;
         emoji_watch === minus ? title_planned = 'remove from planned' : title_planned = 'add to planned';
         emoji_eye === eyed ? title_watched = 'remove from watched' : title_watched = 'add to watched';
+        const $tmdb_link = checkDetailsResponse[0].type.toLowerCase();
         const $item = $(`
         <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}">
         <div class="dbItem-img"><img src="${checkDetailsResponse[0].poster_path}" alt="movie-poster">
         <div class="overlay" id="${checkDetailsResponse[0].id}" data-type="${checkDetailsResponse[0].type}"><i class="${emoji_watch} icon-bottom" id="planned_${checkDetailsResponse[0].id}" title="${title_planned}"></i><i class="${emoji_eye} icon-top" id="watched_${checkDetailsResponse[0].id}" title="${title_watched}"></i></div>
         </div>
-        <div class="details-wrap" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')">
+        <div class="details-wrap" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/${$tmdb_link}/${checkDetailsResponse[0].id}', '_blank')">
         <div class="tmdb-vote">Score: ${checkDetailsResponse[0].vote_average}</div>
         <div class="item-title">${checkDetailsResponse[0].original_title}</div>
         <div class="item-year">Released: ${(a.release_date).slice(0, 4)}</div>
@@ -112,12 +113,14 @@ async function _renderItems(response, query) {
 }
 
 async function searchFromDB() {
-    startSpinner();
     const $input = $('#movie_search').val();
-    const response = await api.get(`/search/multi?api_key=bc686fdcbe90e509852ae370ae0a46f7&query=${$input}`);
-    let resultFromDbQuery = response.data.results;
-    let $search = $(`<h2>search result for query: ${$input}</h2>`);
-    _renderItems(resultFromDbQuery, $search)
+    if ($input !== '') {
+        startSpinner();
+        const response = await api.get(`/search/multi?api_key=bc686fdcbe90e509852ae370ae0a46f7&query=${$input}`);
+        let resultFromDbQuery = response.data.results;
+        let $search = $(`<h2>search result for query: ${$input}</h2>`);
+        _renderItems(resultFromDbQuery, $search)
+    }
 }
 
 async function newMoviesInTheater() {

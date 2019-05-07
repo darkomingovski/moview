@@ -21,9 +21,7 @@ function userRegistrationForm() {
                     <div id="input-password">
                     <input type="password" name="password" id="password" placeholder="password" class="validity" required>
                     </div>
-                    <div id="input-password-repeat">
-                    <input type="password" name="passwordRepeat" id="password-repeat" placeholder="repeat&nbsp;password" required>
-                    </div></div></div>
+                    </div></div>
     <div class="button-wrapper">
     <button type="reset" class="register-button">RESET</button>
     <button type="button" class="register-button" id="register-button">SEND</button></form>`);

@@ -149,7 +149,7 @@ input {
     margin-left: auto;
     margin-right: auto;
 }
-#input-username, #input-firstname, #input-lastname, #input-email, #input-password, #input-password-repeat {
+#input-username, #input-firstname, #input-lastname, #input-email, #input-password {
     display: flex;
     flex-wrap: wrap;
 }
