@@ -101,7 +101,7 @@ async function _renderItems(response, query) {
         <div class="details-wrap" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/${$tmdb_link}/${checkDetailsResponse[0].id}', '_blank')">
         <div class="tmdb-vote">Score: ${checkDetailsResponse[0].vote_average}</div>
         <div class="item-title">${checkDetailsResponse[0].original_title}</div>
-        <div class="item-year">Released: ${(a.release_date).slice(0, 4)}</div>
+        <div class="item-year">${checkDetailsResponse[0].type} released: ${(a.release_date).slice(0, 4)}</div>
         <div class="item-genre">${checkDetailsJson[2].join(', ')}</div>
         </div>
     </div>`);
