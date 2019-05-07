@@ -164,7 +164,7 @@ input {
         grid-template-areas:'main main''login login''footer footer';
     }
     #registration-form {
-        top: 42vh;
+        top: 47vh;
         left: 4vw;
         width: 90vw;
         font-size: 1.5vw;
@@ -244,7 +244,7 @@ input {
         grid-template-columns: 34.7vw auto;
     }
     #registration-form {
-        top: 22vh;
+        top: 27vh;
     }
     .dbItem {
         width: 95%;
