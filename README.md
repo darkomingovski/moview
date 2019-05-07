@@ -13,7 +13,7 @@
 
 ## Project description
 
-User friendly movie and tv show watchlist. User can browse whole TMDb database via TMDb api. Application has a sections as now popular movies, last aired tv shows, new movies in teathers etc. Movies and TV shows can be added to or removed from list of watched items and from planned items list too.
+User friendly movie and tv show watchlist. User can browse whole TMDb database via TMDb api. Application has a sections as now popular movies, last aired tv shows, new movies in theaters etc. Movies and TV shows can be added to or removed from list of watched items and from planned items list too.
 
 ## Technology used
 

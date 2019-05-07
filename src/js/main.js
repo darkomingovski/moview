@@ -57,6 +57,25 @@ function onLoadHTML() {
 function toggleRegister() {
     $('#register-link, #close-register').on('click', () => $('#registration-form').slideToggle());
 }
+
+function registerEnterKey() {
+    $("#login-form").keypress(function( event ) {
+        if ( event.which === 13 ) {
+            $("#login-button").trigger("click");
+        }
+    });
+    $("#registration-form").keypress(function( event ) {
+        if ( event.which === 13 ) {
+            $("#register-button").trigger("click");
+        }
+    });
+    $("#movie_search").keypress(function( event ) {
+        if ( event.which === 13 ) {
+            $("#movie_search_button").trigger("click");
+        }
+    });
+}
+
 function eventsAll() {
     $('#register-button').on('click', registerUser);
     $('#login-button').on('click', userLogin);
@@ -72,6 +91,6 @@ function eventsAll() {
     $('.validity').on('blur', validateFormInput);
 }
 
-$(document).on('load', onLoadHTML(), toggleRegister(), eventsAll());
+$(document).on('load', onLoadHTML(), toggleRegister(), eventsAll(), registerEnterKey());
 
 export { api, api_json }
