@@ -94,11 +94,15 @@ async function _renderItems(response, query) {
         emoji_eye === eyed ? title_watched = 'remove from watched' : title_watched = 'add to watched';
         const $item = $(`
         <div class="dbItem" id="dbItem_${checkDetailsResponse[0].id}">
-        <div class="dbItem-img" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')"><img src="${checkDetailsResponse[0].poster_path}" alt=""></div>
-        <div class="tmdb-vote" id="${checkDetailsResponse[0].id}" data-type="${checkDetailsResponse[0].type}">Score: ${checkDetailsResponse[0].vote_average}<i class="${emoji_watch}" id="planned_${checkDetailsResponse[0].id}" title="${title_planned}"></i><i class="${emoji_eye}" id="watched_${checkDetailsResponse[0].id}" title="${title_watched}"></i></div>
+        <div class="dbItem-img"><img src="${checkDetailsResponse[0].poster_path}" alt="movie-poster">
+        <div class="overlay" id="${checkDetailsResponse[0].id}" data-type="${checkDetailsResponse[0].type}"><i class="${emoji_watch} icon-bottom" id="planned_${checkDetailsResponse[0].id}" title="${title_planned}"></i><i class="${emoji_eye} icon-top" id="watched_${checkDetailsResponse[0].id}" title="${title_watched}"></i></div>
+        </div>
+        <div class="details-wrap" title="open on tmdb" onclick="window.open('https://www.themoviedb.org/movie/${checkDetailsResponse[0].id}', '_blank')">
+        <div class="tmdb-vote">Score: ${checkDetailsResponse[0].vote_average}</div>
         <div class="item-title">${checkDetailsResponse[0].original_title}</div>
         <div class="item-year">Released: ${(a.release_date).slice(0, 4)}</div>
         <div class="item-genre">${checkDetailsJson[2].join(', ')}</div>
+        </div>
     </div>`);
         $item.appendTo('#item-container');
     }
@@ -140,4 +144,4 @@ async function nowPopular() {
     _renderItems(resultFromDbQuery, $title)
 }
 
-export { _renderApp, _renderItems, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch, startSpinner }
+export { _renderApp, _renderItems, searchFromDB, newMoviesInTheater, latestOnTv, nowPopular, recentlyWatched, plannedToWatch, startSpinner, spinner }
